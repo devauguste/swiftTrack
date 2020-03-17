@@ -1,0 +1,124 @@
+.container {
+  border: 0px solid red;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+
+.container-padded .header,
+.container-padded .main {
+  padding: 30px 100px;
+}
+
+
+.container .header {
+  align-items: center;
+  border: 0px solid #09f;
+  display: flex;
+  height: 70px;
+  justify-content: space-between;
+}
+
+.container .header .logo {
+  height: 40px;
+  width: 140px;
+}
+
+.container .header .nav {
+
+  font-size: 13px;
+  position: relative;
+}
+
+.container .header .nav a {
+  color: inherit;
+}
+
+.container .header .nav .nav-item {
+  border: 0px solid red;
+  color: inherit;
+  display: inline-block;
+  margin-right: 30px;
+  position: relative;
+}
+
+.container .header .nav .nav-item:last-child {
+  margin-right: 0;
+}
+
+.container .header .nav .nav-item span {
+  text-transform: uppercase;
+}
+
+.container .header .nav .nav-item .dropdown {
+  background: #fff;
+  border: 1px solid #eee;
+  display: none;
+  /* padding: 0 60px; */
+  position: absolute;
+  left: 0;
+  top: 20px;
+  width: 150px;
+  z-index: 1000;
+}
+
+.container .header .nav .dropdown a {
+  display: block;
+  padding: 10px 8px;
+}
+
+
+.container .main {
+  border: 0px solid red;
+  flex: 1;
+}
+
+
+
+.table {
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  font-size: 16px;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.table * {
+  position: relative;
+}
+
+.table tr {
+  height: 50px;
+}
+
+.table thead tr {
+  background: #36304a;
+}
+
+.table thead th {
+  color: #fff;
+}
+
+
+
+.table tbody tr:last-child {
+  border: 0;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+.table td,
+.table th {
+  text-transform: capitalize;
+  line-height: 50px;
+  padding-left: 8px;
+  text-align: left;
+}

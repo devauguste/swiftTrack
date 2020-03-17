@@ -1,0 +1,62 @@
+
+
+
+.report{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self:center;
+    margin-top: 105px;
+    color: black;
+    margin-bottom: 40px;;
+    
+}
+
+ul{
+    display: flex;
+}
+
+ul li{
+    margin-left:48px;
+    font-size: 19px;
+    font-weight: bold;
+    list-style: initial;
+}
+
+button{
+    margin-left: 25px;
+}
+
+.headTable{
+    text-align: center;
+    font-size:30px;
+    font-weight: bold;
+    border-top:2px solid black;
+    border-left:2px solid black;
+    border-right:2px solid black;
+}
+
+.date{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:30px;
+}
+
+input[type=date] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    height: 10px;
+    background: #f1f1f1;
+  }
+
+  .btnprint{
+      float:right;
+      margin-top:10px;
+      font-size:20px;
+  }
+  
+
+

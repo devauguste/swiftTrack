@@ -1,0 +1,85 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home | Swifttrack</title>
+  <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+    integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/shared/general.css" />
+  <link rel="stylesheet" href="css/shared/layout.css" />
+  <link rel="stylesheet" href="css/reports.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <span><em>SWIFTTRACK</em></span>
+      </div>
+      <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="addStudent.html">add</a></li>
+        <a href="edit.html">edit</a></li>
+        <a href="reports.html">reports</a></li>
+        <a href="dashboard.html">dashboard</a></li>
+
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="intro">
+        <div class="content">
+          <div class="report">
+            <h1>CATEGORIES REPORT:</h1>
+            <ul>
+              <li>
+                weekly
+              </li>
+              <li>
+                monthly
+              </li>
+            </ul>
+            <button>submit</button>
+          </div>
+          <div id="dashboard">
+            <div class="date">
+              <div><label><b>Enter Start Date</b></label>
+                <input type="date" placeholder="date" name="date" required></div>
+
+            </div>
+            <h1 class="headTable">All Categories Report</h1>
+
+            <table class="table table-striped">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Award Categories</th>
+                  <th scope="col">hours</th>
+
+                </tr>
+              </thead>
+              <tbody class="studentDetails">
+                <tr>
+                  <td>mary@example.com</td>
+                  <td>john@example.com</td>
+                </tr>
+                <tr>
+                  <td>mary@example.com</td>
+                  <td>john@example.com</td>
+
+                </tr>
+              </tbody>
+            </table>
+            <button class="btnprint">print</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/shared/general.css" />
+  <link rel="stylesheet" href="css/shared/layout.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/reports.css" />
+</head>
+
+<body>
+  <div class="container container-padded">
+    <div class="header">
+      <img class="logo" src="img/logo.jpg" />
+
+      <div class="nav">
+        <div class="nav-item">
+          <span class="trigger"><a href="/dashboard">Home</a></span>
+        </div>
+
+        <div class="nav-item">
+          <span class="trigger"><a href="/add">Add Student Data</a></span>
+
+        </div>
+
+        <div class="nav-item">
+          <span class="trigger dropdown-trigger"><a href="#">Reports</a></span>
+          <div class="dropdown">
+            <a href="/student-reports">All Students</a>
+            <a href="">Individual Students</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <span class="trigger dropdown-trigger"><a href="#">{{username}}</a></span>
+          <div class="dropdown">
+            <a href="">Help</a>
+            <a href="/logout">Log out</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="main">
+
+      <div class="period">
+        <button id="weekly">Weekly</button>
+        <button id="monthly">Monthly</button>
+      </div>
+
+      <div class="entry">
+        <label>Enter Start Date</label>
+        <input type="date" name="" id="start_date">
+      </div>
+
+      <table class="table" style="margin-top: 70px;">
+        <thead>
+          <tr class="table100-head">
+            <th>No</th>
+            <th>Student ID #</th>
+            <th>Full Name</th>
+            <th>Grade</th>
+            <th>Award</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#students}}
+          <tr>
+            <td>{{COUNT_ID}}</td>
+            <td>{{STUDENT_ID}}</td>
+            <td>{{FIRSTNAME}} {{LASTNAME}}</td>
+            <td>{{GRADE}}</td>
+            <td>{{DESCRIPTION}}</td>
+          </tr>
+          {{/students}}
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="js/app.js"></script>
+
+  <script>
+    // let period = document.querySelector('.period');
+    // let btns = period.querySelectorAll('button');
+    let weekly = document.getElementById('weekly');
+    let monthly = document.getElementById('monthly');
+    let start_date = document.getElementById('start_date');
+    let trs = document.querySelectorAll('tbody tr');
+    weekly.onclick = function () {
+      trs[0].style.display = "none";
+      trs[4].style.display = "none";
+      trs[5].style.display = "none";
+    }
+
+
+    monthly.onclick = function () {
+      window.location.reload();
+    }
+
+    start_date.onchange = function () {
+      weekly.click();
+    }
+
+    // Array.from(btns).forEach(btn => {
+    //   btn.onclick = function () {
+
+    //   }
+    // })
+  </script>
+</body>
+
+</html>

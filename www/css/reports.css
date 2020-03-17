@@ -1,0 +1,31 @@
+.period {
+  border: 0px solid red;
+  height: 45px;
+  margin: auto;
+  width: 400px;
+}
+
+.period button {
+  background: none;
+  font-size: 18px;
+  height: 100%;
+  width: 49%;
+}
+
+
+.entry {
+  height: 45px;
+  margin: auto;
+  margin-top: 45px;
+  width: 400px;
+}
+
+.entry label {
+  font-size: 16px;
+}
+
+.entry input {
+  height: 45px;
+  margin-top: 10px;
+  width: 100%;
+}

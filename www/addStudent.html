@@ -1,0 +1,210 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home | Swifttrack</title>
+  <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/shared/general.css" />
+  <link rel="stylesheet" href="css/shared/layout.css" />
+  <link rel="stylesheet" href="css/addStudent.css" />
+</head>
+
+<body>
+
+
+  <div class="container container-padded">
+    <div class="header">
+      <img class="logo" src="img/logo.jpg" />
+
+      <div class="nav">
+        <div class="nav-item">
+          <span class="trigger"><a href="/dashboard">Home</a></span>
+        </div>
+
+        <div class="nav-item">
+          <span class="trigger"><a href="/add">Add Student Data</a></span>
+
+        </div>
+
+        <div class="nav-item">
+          <span class="trigger dropdown-trigger"><a href="#">Reports</a></span>
+          <div class="dropdown">
+            <a href="/student-reports">All Students</a>
+            <a href="">Individual Students</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <span class="trigger dropdown-trigger"><a href="#">{{username}}</a></span>
+          <div class="dropdown">
+            <a href="">Help</a>
+            <a href="/logout">Log out</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="main">
+      <div class="intro">
+        <div class="content">
+          <form action="/add_student" method="POST" id="add_user">
+            <div class="fix">
+              <div class="left">
+                <h1>Add New Student</h1>
+
+                <div id="reporter"></div>
+                <div class="form_row"><label for="first name"><b>First name</b></label>
+                  <input type="text" placeholder="First Name" name="firstname" required>
+                </div>
+
+                <div class="form_row"><label for="last name"><b>Last name</b></label>
+                  <input type="text" placeholder="Last name" name="lastname" required>
+                </div>
+
+                <div class="form_row"><label for="grade"><b>School grade </b></label>
+                  <input type="number" placeholder="Enter grade" name="grade" required>
+                </div>
+
+                <!-- <div class="form_row"><label for="category"><b>Category</b></label>
+                  <input type="text" placeholder="Category" name="category" required>
+                </div> -->
+                <div class="form_row">
+                  <label for="category"><b>Category</b></label>
+                  <select name="category"" >
+                    {{#category}}
+                    <option value=" {{AWARD_CATEGORY_ID}}">{{DESCRIPTION}}</option>
+                    {{/category}}
+                  </select>
+                </div>
+
+
+                <button class=" add_user_submit" type="submit">Submit</button>
+              </div>
+
+          </form>
+
+          <div class="right">
+            <br>
+            <h3>Add logs</h3>
+            <div class="row log">
+              <div class="form_row"><label for="date"><b>date</b></label>
+                <input type="date" placeholder="date" id="date"></div>
+
+              <div class="form_row"><label for="hour"><b>hours</b></label>
+                <input type="number" placeholder="hour" id="hour"></div>
+
+              <button type="button" id="add-log">Add</button>
+            </div>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Hour</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="tbody">
+
+              </tbody>
+            </table>
+
+          </div>
+
+          <div class="logs">
+            <div class="log"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+  </div>
+
+  </div>
+  </div>
+  </div>
+
+
+
+</body>
+
+</html>
+
+
+<script src="js/app.js"></script>
+<script>
+  let add_user = document.getElementById("add_user");
+  let add_log = document.getElementById('add-log');
+  let date = document.getElementById('date');
+  let hour = document.getElementById('hour');
+  let tbody = document.getElementById('tbody');
+  let reporter = document.getElementById("reporter");
+
+  let logs = [];
+  add_log.onclick = function () {
+    if (!date.value || !hour.value) {
+      alert("Enter valid date and hour");
+      return;
+    }
+
+    let log = {
+      date: date.value,
+      hour: hour.value
+    }
+
+    logs.push(log);
+
+    let tr = document.createElement('tr');
+    let td1 = document.createElement('td');
+    td1.innerText = date.value;
+    let td2 = document.createElement('td');
+    td2.innerText = hour.value;
+    let td3 = document.createElement('td');
+    let btn = document.createElement('button');
+    btn.type = 'button';
+    btn.innerText = "Delete";
+    btn.onclick = function () {
+      tbody.removeChild(this.parentNode.parentNode);
+    }
+
+    td3.appendChild(btn);
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    tr.appendChild(td3);
+    tbody.appendChild(tr);
+  }
+
+  add_user.onsubmit = function (e) {
+    e.preventDefault();
+    let data = {};
+    for (let i = 0, l = this.elements.length - 1; i < l; i++) {
+      let element = this.elements[i];
+      data[element.name] = element.value;
+    }
+    data['logs'] = logs;
+
+    fetch(this.action, {
+        method: this.method,
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => res.json())
+      .then(json => {
+        reporter.style.color = "#27ae60";
+        reporter.innerText = json.msg;
+        window.location = json.url;
+
+      });
+
+  }
+</script>

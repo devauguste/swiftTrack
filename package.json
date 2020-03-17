@@ -1,0 +1,20 @@
+{
+  "name": "swifttrack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "scss": "node-sass -w www/scss -o www/css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "mustache-express": "^1.3.0",
+    "mysql": "^2.18.1"
+  }
+}

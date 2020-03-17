@@ -1,0 +1,80 @@
+ .intro {
+   height: 100%;
+   width: 100%;
+   margin: auto;
+   border: 0px solid blue;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+ }
+
+ .content {
+   border: 0px solid red;
+   margin-top: 100px;
+   width: 900px;
+ }
+
+ .content .left {
+   border: 0px solid red;
+   padding-right: 40px;
+   width: 55%;
+ }
+
+ .content .right {
+   width: 45%;
+ }
+
+ .content .right .table {
+   margin-top: 15px;
+ }
+
+ .content .form_row {
+   margin-top: 20px;
+   width: 100%;
+ }
+
+ .content .form_row label {
+   font-size: 12px;
+   text-transform: uppercase;
+ }
+
+ .content h1 {
+   text-align: left;
+ }
+
+ .fix {
+   display: flex;
+ }
+
+ .row {
+   display: flex;
+   flex-direction: row;
+ }
+
+
+ input[type=text],
+ input[type=number],
+ input[type=date],
+ select {
+   appearance: none;
+   border: 1px solid #999;
+   display: block;
+   font-size: 14px;
+   height: 50px;
+   margin-top: 10px;
+   outline: 0;
+   padding-left: 20px;
+   width: 100%;
+ }
+
+ .add_user_submit {
+   height: 35px;
+   margin-top: 30px;
+   padding: 0 30px;
+ }
+
+ #add-log {
+   display: block;
+   height: 50px;
+   margin-top: 42px;
+ }

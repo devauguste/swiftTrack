@@ -1,0 +1,87 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home | Swifttrack</title>
+  <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/shared/general.css" />
+  <link rel="stylesheet" href="css/shared/layout.css" />
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+  <div id="id01" class="modal">
+    <form id="login-form" class="modal-content animate" action="/auth" method="post">
+      <span id="reporter" class="reporter"></span>
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" required />
+        <br />
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required />
+        <br />
+        <button type="submit">Login</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="container">
+    <div class="main">
+      <div class="left-section">
+        <h1>SwiftTrack</h1>
+        <p>Shruthi Solaiappan</p>
+      </div>
+      <div class="right-section">
+        <button id="login-teacher">Login as Teacher</button>
+        <button>Login as student</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Get the modal
+    let modal = document.getElementById("id01");
+    let login_teacher = document.getElementById("login-teacher");
+    let login_form = document.getElementById("login-form");
+    let reporter = document.getElementById("reporter");
+
+    login_teacher.onclick = () => (modal.style.display = "block");
+
+    window.onclick = event => {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+
+    login_form.onsubmit = function (e) {
+      e.preventDefault();
+      reporter.innerText = "";
+      let data = {};
+      for (let i = 0, len = this.elements.length - 1; i < len; i++) {
+        let element = this.elements[i];
+        data[element.name] = element.value;
+      }
+
+      fetch(this.action, {
+          method: this.method,
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+        .then(res => res.json())
+        .then(json => {
+          if (json.url) {
+            reporter.style.color = "#27ae60";
+            reporter.innerText = json.msg;
+            window.location = json.url;
+          } else {
+            reporter.style.color = "#e74c3c";
+            reporter.innerText = json.msg;
+          }
+        });
+    };
+  </script>
+</body>
+
+</html>
